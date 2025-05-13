@@ -147,10 +147,7 @@ function getApplications(content_type) {
   const seen = new Set();
 
   let applications = Gio.AppInfo.get_recommended_for_type(content_type);
-  console.log("Recommended:", applications.map(a => a.get_id()));
-
   if (!applications || applications.length === 0) {
-    console.log("No recommended apps — falling back to get_all()");
     applications = Gio.AppInfo.get_all().filter((appInfo) => {
       return (
         appInfo.should_show() &&
